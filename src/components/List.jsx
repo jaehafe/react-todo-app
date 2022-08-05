@@ -2,6 +2,7 @@ import React from 'react'
 
 export default function List({ todoData, setTodoData }) {
 
+
   const btnStyle = {
     color: "#fff",
     border: "none",
@@ -39,9 +40,18 @@ export default function List({ todoData, setTodoData }) {
     <div>
       {todoData.map((data) => (
             <div style={getStyle(data.completed)} key={data.id} >
-              <input type="checkbox" defaultChecked={false} onChange={() => handleCompleteChange(data.id)}/>
+              <input 
+                type="checkbox" 
+                defaultChecked={false} 
+                onChange={() => handleCompleteChange(data.id)}
+                />
               {data.title}
-              <button style={btnStyle} onClick={() => handleClick(data.id)} >x</button>
+              <button 
+              style={btnStyle} 
+              onClick={() => handleClick(data.id)} 
+              >
+                x
+              </button>
             </div>
           ))}
     </div>
