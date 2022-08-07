@@ -68,17 +68,39 @@ export default class App extends Component {
           </div>
 
           {this.state.todoData.map((data) => (
-            <div style={this.getStyle(data.completed)} key={data.id} >
-              <input type="checkbox" defaultChecked={false} onChange={() => this.handleCompleteChange(data.id)}/>
+            <div 
+              style={this.getStyle(data.completed)} 
+              key={data.id} 
+            >
+              <input 
+                type="checkbox" 
+                defaultChecked={false} 
+                onChange={() => this.handleCompleteChange(data.id)}
+              />
               {data.title}
-              <button style={this.btnStyle} onClick={() => this.handleClick(data.id)} >x</button>
+              <button 
+                style={this.btnStyle} 
+                onClick={() => this.handleClick(data.id)} 
+              >x
+              </button>
             </div>
           ))}
           
             <form style={{display: 'flex'}} onSubmit={this.handleSubmit}>
-              <input type="text" name="value" style={{flex: '10', padding: '5px' }}
-              placeholder="해야할 일을 입력하세요" value={this.state.value} onChange={this.handleChange}/>
-            <input type="submit" value="입력" className="btn" style={{flex: '1'}}/>
+              <input 
+                type="text" 
+                name="value" 
+                style={{flex: '10', padding: '5px' }}
+                placeholder="해야할 일을 입력하세요" 
+                value={this.state.value} 
+                onChange={this.handleChange}
+              />
+              <input 
+                type="submit" 
+                value="입력" 
+                className="btn" 
+                style={{flex: '1'}}
+              />
             </form>
         </div>
       </div>
