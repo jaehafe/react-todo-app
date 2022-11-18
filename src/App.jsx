@@ -2,6 +2,8 @@ import React, { useCallback, useState } from 'react';
 import './App.css';
 import Form from './component/Form';
 import Lists from './component/Lists';
+import { notify, toastComponent } from './component/toast';
+// import toastComponent from './component/toast';
 
 const initialTodoData = localStorage.getItem('todoData')
   ? JSON.parse(localStorage.getItem('todoData'))
@@ -13,6 +15,7 @@ export default function App() {
   const [value, setValue] = useState('');
 
   const handleSubmit = (e) => {
+    notify('Added!');
     e.preventDefault();
 
     let newTodo = {
@@ -28,6 +31,7 @@ export default function App() {
 
   const handleDelete = useCallback(
     (id) => {
+      notify('Deleted!');
       let newTodoData = todoData.filter((data) => data.id !== id);
       console.log('newTodoData', newTodoData);
       setTodoData(newTodoData);
@@ -39,6 +43,7 @@ export default function App() {
   const handleDeleteAll = () => {
     setTodoData([]);
     localStorage.setItem('todoData', JSON.stringify([]));
+    notify('Deleted all!');
   };
 
   return (
@@ -47,6 +52,7 @@ export default function App() {
         <div className="flex justify-between mb-3">
           <h1>할 일 목록</h1>
           <button onClick={handleDeleteAll}>Delete All</button>
+          {toastComponent()}
         </div>
         <Lists
           todoData={todoData}

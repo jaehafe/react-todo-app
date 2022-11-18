@@ -1,4 +1,7 @@
 import React, { memo, useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { notify } from './toast';
 
 const List = ({
   id,
@@ -40,6 +43,7 @@ const List = ({
     localStorage.setItem('todoData', JSON.stringify(newTodoData));
 
     setIsEditing(false);
+    notify('Saved!');
   };
 
   if (isEditing) {
